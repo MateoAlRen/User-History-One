@@ -57,22 +57,28 @@ public class EventService {
         Event e = repository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Event not founded"));
         return EventDTO.builder()
+                .eventId(e.getEventId())
                 .eventName(e.getEventName())
                 .eventDescription(e.getEventDescription())
+                .date(e.getDate())
                 .build();
     }
 
     public EventDTO update(Integer id, EventDTO dto){
         Event e = repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Event not founded"));
+                .orElseThrow(() -> new NoSuchElementException("Venue not found"));
 
         e.setEventName(dto.getEventName());
+        e.setEventDescription(dto.getEventDescription());
+        e.setDate(dto.getDate());
 
-        repository.save(e);
+        Event updated = repository.update(e);
 
         return EventDTO.builder()
-                .eventName(dto.getEventName())
-                .eventDescription(dto.getEventDescription())
+                .eventId(updated.getEventId())
+                .eventName(updated.getEventName())
+                .eventDescription(updated.getEventDescription())
+                .date(updated.getDate())
                 .build();
     }
 

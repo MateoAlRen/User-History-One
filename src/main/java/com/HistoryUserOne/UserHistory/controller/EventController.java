@@ -2,6 +2,7 @@ package com.HistoryUserOne.UserHistory.controller;
 
 import com.HistoryUserOne.UserHistory.dto.EventDTO;
 import com.HistoryUserOne.UserHistory.service.EventService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
